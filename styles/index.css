@@ -1,0 +1,232 @@
+/* General Body Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Switched to a clean white background */
+    background-color: #f8f9fa; 
+    color: #212529; /* Dark text for readability */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('https://media.istockphoto.com/id/1749495731/photo/wooden-table-top-on-blur-kitchen-room-background.jpg?s=612x612&w=0&k=20&c=IqqpQS-0atrkWjLVTLXJA--zy5XFJ5bcILthikkCIqY=');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Main Container */
+.login-container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    /* White background for the container */
+    background-color: #ffffff; 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
+}
+
+/* Left Panel (Image) */
+.left-panel {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Matching the container background */
+    background-color: #ffffff;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529; /* Dark text */
+}
+
+.logo span {
+    color: #007BFF; /* New Accent Color: Professional Blue */
+}
+
+.food-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* Right Panel (Form) */
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #f8f9fa; /* A very light grey for subtle contrast */
+}
+
+.login-form {
+    width: 100%;
+    max-width: 320px;
+}
+
+.login-form h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: left;
+    color: #212529; /* Dark text */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: #6c757d; /* Softer grey for labels */
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffffff; 
+    border: 1px solid #ced4da; /* Standard light grey border */
+    border-radius: 8px;
+    color: #495057;
+    font-size: 1rem;
+    box-sizing: border-box; 
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.signin-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF; /* New Accent Color: Professional Blue */
+    border: none;
+    border-radius: 8px;
+    color: #ffffff; /* White text on button */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signin-btn:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+}
+
+/* Divider */
+.divider {
+    font-size: 0.8rem;
+    color: #adb5bd;
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background-color: #dee2e6;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+/* Social Login */
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.social-btn:hover {
+    background-color: #e9ecef;
+}
+
+.social-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Register Link */
+.register-link {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.register-link a {
+    color: #007BFF; /* Link color matches new accent */
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+

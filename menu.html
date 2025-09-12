@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Food Pre-order Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Page-Specific Styles -->
+    <link rel="stylesheet" href="styles/menu.css">
+</head>
+<body>
+
+    <main class="container">
+        <!-- Step 1: Category Selection -->
+        <section id="category-view" class="menu-section">
+            <h1>View Our Menu</h1>
+            <p>Select from our wide range of delicious, freshly prepared meals.</p>
+            
+            <div id="category-grid" class="category-grid">
+                <!-- Category cards with updated button text -->
+                 <div class="category-card" data-category="breakfast">
+                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692573/breakfast_rvmspr.webp" alt="Breakfast">
+                    <h3>Breakfast</h3>
+                    <button class="read-more-btn">View more</button>
+                </div>
+                 <div class="category-card" data-category="lunch">
+                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757693301/lunch1_c7b02d.jpg" alt="Lunch">
+                    <h3>Lunch</h3>
+                    <button class="read-more-btn">View more</button>
+                </div>
+                <div class="category-card" data-category="snacks">
+                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692612/snacks_x5ekqj.jpg" alt="Snacks">
+                    <h3>Snacks</h3>
+                    <button class="read-more-btn">View more</button>
+                </div>
+                <div class="category-card" data-category="dessert">
+                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692831/desserts_lpxfqr.jpg" alt="Desserts">
+                    <h3>Desserts</h3>
+                    <button class="read-more-btn">View more</button>
+                </div>
+                <div class="category-card" data-category="waffles">
+                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692557/Waffle_wqwdts.jpg" alt="waffles">
+                    <h3>Pizza</h3>
+                    <button class="read-more-btn">View more</button>
+                </div>
+                 <div class="category-card" data-category="drinks">
+                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692686/juice_gauwhf.jpg" alt="Drinks">
+                    <h3>Drinks</h3>
+                    <button class="read-more-btn">View more</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Item Selection (Initially Hidden) -->
+        <section id="item-view" class="menu-section hidden">
+            <button id="back-to-menu-btn">&larr; Back to Categories</button>
+            <h1 id="item-view-title">Our Menu</h1>
+            <div id="menu-grid" class="menu-grid">
+                <!-- Menu items will be dynamically inserted here by menu.js -->
+            </div>
+        </section>
+    </main>
+
+    
+
+    <!-- Page-specific script -->
+    <script src="scripts/menu.js"></script>
+</body>
+</html>
+
