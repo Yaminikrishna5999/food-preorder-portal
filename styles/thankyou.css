@@ -1,0 +1,63 @@
+ body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Card entry animation */
+        .thank-you-card {
+            animation: fadeInScale 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Custom button styles to match the image */
+        .action-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #ea580c; /* orange-600 */
+        }
+
+        /* --- Particle Animation --- */
+        .icon-container .particle {
+            position: absolute;
+            background-color: #fdba74; /* orange-300 */
+            border-radius: 50%;
+            opacity: 0;
+            animation: burst 0.8s ease-out forwards;
+        }
+
+        @keyframes burst {
+            from {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            to {
+                /* Use CSS variables for dynamic positioning */
+                transform: scale(1) translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+
+        /* Positioning and delay for each particle */
+        .particle:nth-child(2) { width: 8px; height: 8px; top: 15%; left: 15%; --x: -40px; --y: -40px; animation-delay: 0.1s; }
+        .particle:nth-child(3) { width: 5px; height: 5px; top: 20%; left: 80%; --x: 50px; --y: -30px; animation-delay: 0.05s; }
+        .particle:nth-child(4) { width: 10px; height: 10px; top: 80%; left: 10%; --x: -50px; --y: 30px; animation-delay: 0.2s; }
+        .particle:nth-child(5) { width: 6px; height: 6px; top: 75%; left: 85%; --x: 45px; --y: 45px; animation-delay: 0.15s; }
+        .particle:nth-child(6) { width: 7px; height: 7px; top: 50%; left: 0%; --x: -60px; --y: 0; animation-delay: 0.25s; }
+        .particle:nth-child(7) { width: 7px; height: 7px; top: 45%; left: 95%; --x: 60px; --y: 10px; animation-delay: 0.1s; }

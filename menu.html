@@ -1,73 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Food Pre-order Portal</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <!-- Page-Specific Styles -->
+    <!-- Tailwind CSS is now used for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles/menu.css">
+    <script src="scripts/menu.js" defer></script>
+    
 </head>
-<body>
 
-    <main class="container">
-        <!-- Step 1: Category Selection -->
+<body class="bg-gray-100">
+
+    <header class="main-header bg-orange-500 p-4 rounded-lg shadow-md mb-6">
+        <div class="container mx-auto">
+            <nav class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-bold font-['Montserrat'] text-white">MIC Cafeteria</h1>
+                </div>
+                <div class="flex items-center">
+                    <a href="index.html" class="bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-100 transition-colors">Back to login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
         <section id="category-view" class="menu-section">
-            <h1>View Our Menu</h1>
-            <p>Select from our wide range of delicious, freshly prepared meals.</p>
-            
-            <div id="category-grid" class="category-grid">
-                <!-- Category cards with updated button text -->
-                 <div class="category-card" data-category="breakfast">
-                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692573/breakfast_rvmspr.webp" alt="Breakfast">
-                    <h3>Breakfast</h3>
-                    <button class="read-more-btn">View more</button>
-                </div>
-                 <div class="category-card" data-category="lunch">
-                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757693301/lunch1_c7b02d.jpg" alt="Lunch">
-                    <h3>Lunch</h3>
-                    <button class="read-more-btn">View more</button>
-                </div>
-                <div class="category-card" data-category="snacks">
-                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692612/snacks_x5ekqj.jpg" alt="Snacks">
-                    <h3>Snacks</h3>
-                    <button class="read-more-btn">View more</button>
-                </div>
-                <div class="category-card" data-category="dessert">
-                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692831/desserts_lpxfqr.jpg" alt="Desserts">
-                    <h3>Desserts</h3>
-                    <button class="read-more-btn">View more</button>
-                </div>
-                <div class="category-card" data-category="waffles">
-                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692557/Waffle_wqwdts.jpg" alt="waffles">
-                    <h3>Pizza</h3>
-                    <button class="read-more-btn">View more</button>
-                </div>
-                 <div class="category-card" data-category="drinks">
-                    <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692686/juice_gauwhf.jpg" alt="Drinks">
-                    <h3>Drinks</h3>
-                    <button class="read-more-btn">View more</button>
-                </div>
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">View Our Menu</h1>
+                <p class="text-lg text-gray-600 mb-8">Select from our wide range of delicious, freshly prepared meals.</p>
             </div>
-        </section>
 
-        <!-- Step 2: Item Selection (Initially Hidden) -->
-        <section id="item-view" class="menu-section hidden">
-            <button id="back-to-menu-btn">&larr; Back to Categories</button>
-            <h1 id="item-view-title">Our Menu</h1>
-            <div id="menu-grid" class="menu-grid">
-                <!-- Menu items will be dynamically inserted here by menu.js -->
+            <div id="category-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Breakfast Category -->
+                <a href="breakfast.html" class="category-link block bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                    <div class="category-card p-6 text-center">
+                        <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692573/breakfast_rvmspr.webp" alt="Breakfast" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-bold mb-2">Breakfast</h3>
+                        <button class="read-more-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">View more</button>
+                    </div>
+                </a>
+
+                <!-- Lunch Category -->
+                <a href="lunch.html" class="category-link block bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                    <div class="category-card p-6 text-center">
+                        <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757693301/lunch1_c7b02d.jpg" alt="Lunch" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-bold mb-2">Lunch</h3>
+                        <button class="read-more-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">View more</button>
+                    </div>
+                </a>
+
+                <!-- Snacks Category -->
+                <a href="snacks.html" class="category-link block bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                    <div class="category-card p-6 text-center">
+                        <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692612/snacks_x5ekqj.jpg" alt="Snacks" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-bold mb-2">Snacks</h3>
+                        <button class="read-more-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">View more</button>
+                    </div>
+                </a>
+
+                <!-- Desserts Category -->
+                <a href="desserts.html" class="category-link block bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                    <div class="category-card p-6 text-center">
+                        <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692831/desserts_lpxfqr.jpg" alt="Desserts" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-bold mb-2">Desserts</h3>
+                        <button class="read-more-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">View more</button>
+                    </div>
+                </a>
+
+                <!-- Ice Creams Category -->
+                <a href="icecream.html" class="category-link block bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                    <div class="category-card p-6 text-center">
+                        <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757775840/ice_hijdcj.webp" alt="Ice Creams" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-bold mb-2">Ice Creams</h3>
+                        <button class="read-more-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">View more</button>
+                    </div>
+                </a>
+
+                <!-- Juices Category -->
+                <a href="juice.html" class="category-link block bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                    <div class="category-card p-6 text-center">
+                        <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757692686/juice_gauwhf.jpg" alt="Juices" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-2xl font-bold mb-2">Juices</h3>
+                        <button class="read-more-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">View more</button>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
-
-    
-
-    <!-- Page-specific script -->
-    <script src="scripts/menu.js"></script>
 </body>
+
 </html>
+
 

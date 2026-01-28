@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desserts Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .main-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .cart-badge-container {
+            position: relative;
+        }
+
+        .card {
+            height: auto; /* Adjust height dynamically based on content */
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: #d97706; /* amber-600 for contrast */
+            color: white;
+            border-radius: 50%;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1;
+            border: 2px solid white;
+        }
+
+        #toast-container {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 1000 !important;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background-color: #22c55e;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 1 !important;
+            animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+        .product-image {
+          filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-6">
+        <!-- Header Section -->
+        <header class="main-header mb-6 bg-[#f59e0b] p-4 rounded-lg shadow-md">
+            <nav>
+                <div>
+                    <a href="menu.html" class="text-base font-semibold text-white hover:text-amber-200 transition-colors">&larr; Back to Categories</a>
+                </div>
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold font-['Montserrat'] text-white">Desserts</h1>
+                </div>
+                <div class="cart-badge-container">
+                    <a href="cart.html" class="text-white hover:text-amber-200 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span id="cart-count" class="hidden">0</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Menu Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Item 1 -->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703629/Gemini_Generated_Image_sspig1sspig1sspi_e4eefw.png" alt="Gulab Jamun" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Gulab Jamun</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="50">Price: ₹50</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703683/Gemini_Generated_Image_argegmargegmarge_pboexv.png" alt="Rasmalai" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Rasmalai</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="60">Price: ₹60</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703751/Gemini_Generated_Image_n43u3rn43u3rn43u_okfwyr.png" alt="Fruit Custard" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Fruit Custard</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="50">Price: ₹50</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703735/Gemini_Generated_Image_idwkmqidwkmqidwk_uotbl1.png" alt="Brownies" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Brownies</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="80">Price: ₹80</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+            <!--Item 5-->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703674/Gemini_Generated_Image_hd0mkohd0mkohd0m_w9aorq.png" alt="Dry Freet Falooda" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Dry Freet Falooda</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="150">Price: ₹150</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+            <!--Item 6-->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703622/Gemini_Generated_Image_d8ezdd8ezdd8ezdd_yo3xke.png" alt="Red Velvet" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Red Velvet</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="90">Price: ₹90</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- More items... -->
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703654/Gemini_Generated_Image_53vqwq53vqwq53vq_ugyqdf.png" alt="Chocolate Pudding" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Chocolate Pudding</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="50">Price: 50</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703642/Gemini_Generated_Image_64nmr864nmr864nm_bogpxg.png" alt="Mix Fruit Falooda" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Mix Fruit Falooda</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="120">Price: ₹120</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card bg-white rounded-lg shadow-xl overflow-hidden transition-transform ease-in-out duration-300 hover:-translate-y-1">
+                <img src="https://res.cloudinary.com/diy6nhly9/image/upload/v1757703612/Gemini_Generated_Image_s8w0a7s8w0a7s8w0_einuon.png" alt="Chocolate Cake" class="w-full h-auto object-cover product-image">
+                <div class="p-6 text-center">
+                    <h3 class="text-2xl font-bold mb-2">Chocolate Cake</h3>
+                    <p class="text-lg font-semibold text-gray-700 mb-4" data-price="80">Price: ₹80</p>
+                    <button class="add-to-cart-btn w-full bg-amber-500 text-white py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container for notifications -->
+    <div id="toast-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            const cartCountEl = document.getElementById('cart-count');
+
+            const loadCart = () => {
+                try {
+                    const storedCart = localStorage.getItem('shoppingCart');
+                    const parsed = storedCart ? JSON.parse(storedCart) : [];
+                    return Array.isArray(parsed) ? parsed : [];
+                } catch (e) {
+                    console.error("Failed to parse cart from localStorage", e);
+                    return [];
+                }
+            };
+
+            const saveCart = (cart) => {
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            };
+
+            const updateCartCount = () => {
+                const cart = loadCart();
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+                if (totalItems > 0) {
+                    cartCountEl.textContent = totalItems;
+                    cartCountEl.classList.remove('hidden');
+                } else {
+                    cartCountEl.classList.add('hidden');
+                }
+            };
+
+            const showToast = (message) => {
+                const toastContainer = document.getElementById('toast-container');
+                if (!toastContainer) {
+                    console.error('Toast container not found in the DOM.');
+                    return;
+                }
+
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>${message}</span>
+                `;
+                toastContainer.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            };
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.card');
+                    if (!card) return;
+
+                    const nameEl = card.querySelector('h3');
+                    const priceEl = card.querySelector('p');
+                    const imageEl = card.querySelector('img');
+
+                    if (!nameEl || !priceEl || !imageEl || !priceEl.dataset.price) {
+                        console.error("Card is missing name, price, image, or data-price attribute.");
+                        return;
+                    }
+
+                    const itemName = nameEl.textContent.trim();
+                    const item = {
+                        id: itemName.replace(/\s+/g, '-').toLowerCase(),
+                        name: itemName,
+                        price: parseFloat(priceEl.dataset.price),
+                        image: imageEl.src,
+                        quantity: 1
+                    };
+
+                    const cart = loadCart();
+                    const existingItemIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+
+                    if (existingItemIndex > -1) {
+                        cart[existingItemIndex].quantity += 1;
+                    } else {
+                        cart.push(item);
+                    }
+
+                    saveCart(cart);
+                    updateCartCount();
+                    showToast(`${item.name} added to cart!`);
+                });
+            });
+
+            updateCartCount();
+        });
+    </script>
+</body>
+
+</html>

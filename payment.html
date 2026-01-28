@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout & Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .payment-option-header { cursor: pointer; }
+        .rotate-180 { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Pop-ups -->
+    <div id="success-popup" class="fixed top-5 left-1/2 -translate-x-1/2 bg-green-500 text-white py-3 px-6 rounded-lg shadow-lg z-50 opacity-0 -translate-y-full transition-all duration-500 ease-in-out"></div>
+    <div id="error-popup" class="fixed top-5 left-1/2 -translate-x-1/2 bg-red-500 text-white py-3 px-6 rounded-lg shadow-lg z-50 opacity-0 -translate-y-full transition-all duration-500 ease-in-out"></div>
+
+    <div class="container mx-auto p-4 sm:p-6 max-w-2xl">
+        <!-- Header -->
+        <header class="main-header grid grid-cols-3 items-center mb-6 bg-[#f59e0b] p-4 rounded-lg shadow-md">
+            <nav>
+                <div><a href="cart.html" class="text-base font-semibold text-white hover:text-amber-200 transition-colors">&larr; Back to Cart</a></div>
+            </nav>
+            <div class="text-center"><h1 class="text-3xl font-bold font-['Montserrat'] text-white">Checkout</h1></div>
+            <div></div>
+        </header>
+
+        <!-- Payment Options Container -->
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden divide-y divide-gray-200">
+            <!-- Credit/Debit/ATM Card -->
+            <div class="payment-option">
+                <div class="payment-option-header flex items-center justify-between p-6">
+                    <div class="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+                        <h2 class="text-lg font-semibold text-gray-800">Credit / Debit / ATM Card</h2>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="payment-option-content p-6 hidden">
+                    <!-- Card details form -->
+                    <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 mb-4">Note: Please ensure your card can be used for online transactions. <a href="#" class="text-blue-600 underline">Learn More</a></div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="card-number" class="block text-sm font-medium text-gray-700">Card Number</label>
+                            <input id="card-number" type="text" placeholder="XXXX XXXX XXXX XXXX" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:border-amber-500 focus:ring focus:ring-amber-500 focus:ring-opacity-50">
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                            <div class="flex-1">
+                                <label for="card-expiry" class="block text-sm font-medium text-gray-700">Valid Thru</label>
+                                <input id="card-expiry" type="text" placeholder="MM / YY" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:border-amber-500 focus:ring focus:ring-amber-500 focus:ring-opacity-50">
+                            </div>
+                            <div class="flex-1">
+                                <label for="card-cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                                <input id="card-cvv" type="password" placeholder="CVV" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:border-amber-500 focus:ring focus:ring-amber-500 focus:ring-opacity-50">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="card-pay-button" class="pay-button w-full mt-6 bg-yellow-500 text-white font-semibold py-4 rounded-lg hover:bg-yellow-600 transition-colors text-lg">Pay ₹0</button>
+                </div>
+            </div>
+
+            <!-- UPI -->
+            <div class="payment-option">
+                <div class="payment-option-header flex items-center justify-between p-6">
+                    <div class="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M16 12h-4V8M8 12h4v4M12 8l-4 4 4 4m4-4l-4 4-4-4"/></svg>
+                        <h2 class="text-lg font-semibold text-gray-800">UPI</h2>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="payment-option-content p-6 hidden">
+                    <!-- UPI options -->
+                    <div class="space-y-4">
+                        <label class="flex items-center space-x-3"><input type="radio" name="upi-option" value="gpay" class="form-radio h-5 w-5 text-amber-500"><span class="text-gray-700 text-lg font-medium">Google Pay</span><img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757839924/googlepe_bnxnro.webp" alt="Google Pay" class="h-6"></label>
+                        <label class="flex items-center space-x-3"><input type="radio" name="upi-option" value="phonepe" class="form-radio h-5 w-5 text-amber-500"><span class="text-gray-700 text-lg font-medium">PhonePe</span><img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757839880/phonepe1_h3yj25.png" alt="PhonePe" class="h-6"></label>
+                        <label class="flex items-center justify-between"><div class="flex items-center space-x-3"><input type="radio" name="upi-option" value="paytm" class="form-radio h-5 w-5 text-amber-500"><span class="text-gray-700 text-lg font-medium">Paytm</span><img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757839903/paytm_jjxwel.png" alt="Paytm" class="h-6"></div></label>
+                    </div>
+                    <button id="upi-pay-button" class="pay-button w-full mt-6 bg-yellow-500 text-white font-semibold py-4 rounded-lg hover:bg-yellow-600 transition-colors text-lg">Pay ₹0</button>
+                </div>
+            </div>
+
+            <!-- Net Banking -->
+            <div class="payment-option">
+                <div class="payment-option-header flex items-center justify-between p-6">
+                    <div class="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 4h1m-1 4h1m-1 4h1M6 21v-4m6 4v-4m6 4v-4" /></svg>
+                        <h2 class="text-lg font-semibold text-gray-800">Net Banking</h2>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="payment-option-content p-6 hidden">
+                    <!-- Bank options -->
+                    <div class="space-y-4">
+                        <label class="flex items-center space-x-3"><input type="radio" name="bank-option" value="statebank" class="form-radio h-5 w-5 text-amber-500"><span class="text-gray-700 text-lg font-medium">State Bank of India</span><img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757838677/sbi_s5idiy.png" alt="SBI" class="h-6"></label>
+                        <label class="flex items-center space-x-3"><input type="radio" name="bank-option" value="hdfc" class="form-radio h-5 w-5 text-amber-500"><span class="text-gray-700 text-lg font-medium">HDFC Bank</span><img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757838984/hdfc_mnjadg.png" alt="HDFC" class="h-6"></label>
+                        <label class="flex items-center space-x-3"><input type="radio" name="bank-option" value="icici" class="form-radio h-5 w-5 text-amber-500"><span class="text-gray-700 text-lg font-medium">ICICI Bank</span><img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757838969/icici_wbsxob.jpg" alt="ICICI" class="h-6"></label>
+                    </div>
+                    <button id="net-banking-pay-button" class="pay-button w-full mt-6 bg-yellow-500 text-white font-semibold py-4 rounded-lg hover:bg-yellow-600 transition-colors text-lg">Pay ₹0</button>
+                </div>
+            </div>
+
+            <!-- Payment On Site -->
+            <div class="payment-option">
+                <div class="payment-option-header flex items-center justify-between p-6">
+                    <div class="flex items-center space-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2v4m-2 0h4m-4 4h4m-9-4h4m-4 4h4" /></svg>
+                        <h2 class="text-lg font-semibold text-gray-800">Payment On Site</h2>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                </div>
+                <div class="payment-option-content p-6 hidden">
+                    <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 mb-4">Due to handling costs, a nominal fee of ₹9 will be charged for orders placed using this option. Avoid this fee by paying online now.</div>
+                    <button class="place-order-button w-full bg-yellow-500 text-white font-semibold py-4 rounded-lg hover:bg-yellow-600 transition-colors text-lg">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Accordion ---
+        const paymentOptionHeaders = document.querySelectorAll('.payment-option-header');
+        paymentOptionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const currentlyOpen = document.querySelector('.payment-option-content:not(.hidden)');
+                const currentHeader = currentlyOpen?.previousElementSibling;
+                if (currentlyOpen && currentHeader !== header) {
+                    currentlyOpen.classList.add('hidden');
+                    currentHeader.querySelector('svg:last-child').classList.remove('rotate-180');
+                }
+                const content = header.nextElementSibling;
+                content.classList.toggle('hidden');
+                header.querySelector('svg:last-child').classList.toggle('rotate-180');
+            });
+        });
+        
+        // --- Get and Display Total Amount ---
+        const totalAmount = localStorage.getItem('totalAmount') || '0.00';
+        const formattedAmount = `Pay ₹${parseFloat(totalAmount).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        
+        document.querySelectorAll('.pay-button').forEach(button => {
+            button.textContent = formattedAmount;
+        });
+
+        const placeOrderButton = document.querySelector('.place-order-button');
+        if (placeOrderButton) {
+            const totalWithFee = parseFloat(totalAmount) + 9;
+            placeOrderButton.textContent = `Place Order (Pay ₹${totalWithFee.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })})`;
+        }
+
+        // --- Pop-up Handling ---
+        const successPopup = document.getElementById('success-popup');
+        const errorPopup = document.getElementById('error-popup');
+        function showPopup(popup, message) {
+            popup.textContent = message;
+            popup.classList.remove('opacity-0', '-translate-y-full');
+            popup.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                popup.classList.remove('opacity-100', 'translate-y-0');
+                popup.classList.add('opacity-0', '-translate-y-full');
+            }, 3000);
+        }
+
+        // --- Save Amount Before Navigation ---
+        function saveAmountAndNavigate(url) {
+            localStorage.setItem('totalAmount', totalAmount);
+            window.location.href = url;
+        }
+        
+        // --- Credit Card Validation & Payment ---
+        const cardNumberInput = document.getElementById('card-number');
+        const cardExpiryInput = document.getElementById('card-expiry');
+        const cardCvvInput = document.getElementById('card-cvv');
+        
+        // Formatting inputs
+        cardNumberInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+            e.target.value = value.slice(0, 19);
+        });
+        cardExpiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 2) value = value.slice(0, 2) + ' / ' + value.slice(2, 4);
+            e.target.value = value.slice(0, 7);
+        });
+        cardCvvInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+        });
+
+        document.getElementById('card-pay-button').addEventListener('click', () => {
+            if (cardNumberInput.value.length !== 19 || !/^\d{2} \/ \d{2}$/.test(cardExpiryInput.value) || cardCvvInput.value.length < 3) {
+                showPopup(errorPopup, 'Please check your card details.');
+                return;
+            }
+            showPopup(successPopup, 'Payment Successful!');
+            // Redirect to thank you page after a delay
+            setTimeout(() => {
+                saveAmountAndNavigate('thankyou.html');
+            }, 1500);
+        });
+
+        // --- UPI Payment ---
+        document.getElementById('upi-pay-button').addEventListener('click', () => {
+            const selectedUpi = document.querySelector('input[name="upi-option"]:checked');
+            if (selectedUpi) {
+                localStorage.setItem('upiAppName', selectedUpi.nextElementSibling.textContent);
+                saveAmountAndNavigate('qr.html');
+            } else {
+                showPopup(errorPopup, 'Please select a UPI option.');
+            }
+        });
+
+        // --- Net Banking Payment ---
+        document.getElementById('net-banking-pay-button').addEventListener('click', () => {
+            const selectedBank = document.querySelector('input[name="bank-option"]:checked');
+            if (selectedBank) {
+                saveAmountAndNavigate(`${selectedBank.value}.html`);
+            } else {
+                showPopup(errorPopup, 'Please select a bank.');
+            }
+        });
+        
+        // --- Payment On Site ---
+        if (placeOrderButton) {
+            placeOrderButton.addEventListener('click', () => {
+                showPopup(successPopup, 'Order Placed! You can pay on site.');
+                setTimeout(() => {
+                    saveAmountAndNavigate('thankyou.html');
+                }, 1500);
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+

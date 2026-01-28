@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan to Pay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="container mx-auto p-6 max-w-sm">
+        <div class="bg-white rounded-lg shadow-xl p-8 text-center">
+            <!-- Header -->
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">Scan to Pay</h1>
+            <p class="text-gray-600 mb-6">
+                Please scan the QR code below with your UPI app to complete the payment.
+            </p>
+
+            <!-- QR Code Container -->
+            <div id="qrcode-container" class="flex justify-center mb-6">
+                <div id="qrcode" class="p-2 border-4 border-amber-500 rounded-lg"></div>
+            </div>
+
+            <!-- Total Amount Display -->
+            <p id="amount-display" class="text-xl font-semibold text-gray-800 mb-6"></p>
+
+            <!-- Back Button -->
+            <a href="payment.html" class="w-full inline-block bg-gray-200 text-gray-800 font-semibold py-3 rounded-lg hover:bg-gray-300 transition-colors">
+                Go to Payment Options
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const qrCodeContainer = document.getElementById('qrcode');
+            const amountDisplay = document.getElementById('amount-display');
+            // FIX: Changed 'orderTotal' to 'totalAmount' to match the other pages.
+            const totalAmount = localStorage.getItem('totalAmount');
+
+            if (totalAmount) {
+                const total = parseFloat(totalAmount);
+                const formattedTotal = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(total);
+                amountDisplay.textContent = `Total: ${formattedTotal}`;
+
+                // UPI Deep Link (replace with your actual details for a real-world app)
+                const upiId = 'testupi@upi'; 
+                const merchantName = 'Test Merchant';
+                const transactionRef = 'TXN' + Date.now();
+                const note = 'Payment for food order';
+                
+                const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&mc=1234&tid=${transactionRef}&tr=${transactionRef}&am=${total.toFixed(2)}&cu=INR&tn=${encodeURIComponent(note)}`;
+
+                // Generate QR Code
+                new QRCode(qrCodeContainer, {
+                    text: upiLink,
+                    width: 200,
+                    height: 200,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            } else {
+                qrCodeContainer.innerHTML = '<p class="text-red-500 font-semibold">Error: No amount found. Please go back to the cart.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
+

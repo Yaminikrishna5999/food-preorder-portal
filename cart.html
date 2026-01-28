@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/cart.css">
+    <script src="scripts/cart.js" defer></script>
+    
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <!-- Header Section -->
+        <header class="main-header mb-6 bg-[#f59e0b] p-4 rounded-lg shadow-md">
+            <nav>
+                <!-- This div is for the "Back to Menu" link -->
+                <div>
+                    <a href="menu.html" class="text-base font-semibold text-white hover:text-amber-200 transition-colors">&larr; Back to Menu</a>
+                </div>
+                <!-- This div holds the centered heading -->
+                <div class="text-center">
+                    <h1 class="text-3xl font-bold font-['Montserrat'] text-white">Cart Items</h1>
+                </div>
+                <!-- This empty div acts as a spacer to balance the "Back to Menu" link, ensuring the heading is perfectly centered. -->
+                <div></div>
+            </nav>
+        </header>
+
+        <!-- Cart Section -->
+        <main class="bg-white rounded-lg shadow-md p-6">
+            <div id="cart-items-wrapper">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty Cart Message -->
+            <div id="empty-cart-message" class="hidden text-center py-12">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <h2 class="mt-4 text-2xl font-semibold text-gray-700">Your cart is empty</h2>
+                <p class="mt-2 text-gray-500">Looks like you haven't added anything to your cart yet.</p>
+            </div>
+
+            <!-- Order Summary -->
+            <div id="order-summary" class="hidden mt-6 pt-6 border-t border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Order Summary</h2>
+                <div class="space-y-2">
+                    <div class="flex justify-between text-lg">
+                        <span class="text-gray-600">Subtotal:</span>
+                        <span id="subtotal-price" class="font-semibold text-gray-800">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-lg">
+                        <span class="text-gray-600">Taxes (10%):</span>
+                        <span id="tax-price" class="font-semibold text-gray-800">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-2xl font-bold">
+                        <span class="text-gray-800">Total:</span>
+                        <span id="total-price" class="text-amber-500">₹0</span>
+                    </div>
+                </div>
+                <button id="checkout-button" class="w-full mt-6 bg-amber-500 text-white py-3 rounded-lg font-semibold text-lg hover:bg-amber-600 transition-colors">
+                    Proceed to Payment
+                </button>
+            </div>
+        </main>
+    </div>
+
+    
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICICI Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/icici.css">
+    <script src="scripts/icici.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    
+    <!-- Error Pop-up -->
+    <div id="error-popup" class="fixed top-5 left-1/2 -translate-x-1/2 bg-red-500 text-white py-3 px-6 rounded-lg shadow-lg z-50 opacity-0 -translate-y-full transition-all duration-500 ease-in-out">
+        Please enter account number
+    </div>
+
+    <div class="container mx-auto p-6 max-w-lg">
+        <!-- Header -->
+        <header class="mb-6 bg-white rounded-lg shadow-md p-4 flex items-center justify-between">
+            <a href="payment.html" class="text-gray-500 hover:text-gray-700 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+            </a>
+            <div class="flex items-center space-x-3">
+                <img src="https://res.cloudinary.com/dtf1nbthx/image/upload/v1757838969/icici_wbsxob.jpg" alt="ICICI Bank" class="h-8">
+                <h1 class="text-2xl font-bold text-gray-800">ICICI Bank</h1>
+            </div>
+            <div class="w-6"></div> <!-- Spacer -->
+        </header>
+
+        <!-- Payment Form -->
+        <div class="bg-white p-8 rounded-lg shadow-xl">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Account Details</h2>
+            <div class="space-y-4">
+                <div>
+                    <label for="account-number" class="block text-sm font-medium text-gray-700">Account Number / Registered Mobile Number</label>
+                    <input type="text" id="account-number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2 focus:border-amber-500 focus:ring focus:ring-amber-500 focus:ring-opacity-50" placeholder="Enter account or mobile number">
+                </div>
+                <div class="flex justify-between items-center text-xl font-bold">
+                    <span>Amount to Pay:</span>
+                    <span id="amount-to-pay" class="text-amber-500">₹0.00</span>
+                </div>
+            </div>
+            <button id="pay-button" class="w-full mt-6 bg-yellow-500 text-white font-semibold py-4 rounded-lg hover:bg-yellow-600 transition-colors text-lg">Pay ₹0.00</button>
+        </div>
+    </div>
+</body>
+</html>
+
